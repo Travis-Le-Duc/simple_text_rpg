@@ -1,7 +1,7 @@
 require_relative '../models/scene.rb'
-require_relative '../models/good_action.rb'
-require_relative '../models/exit_action.rb'
-require_relative '../models/no_action.rb'
+require_relative '../models/action/good_action.rb'
+require_relative '../models/action/exit_action.rb'
+require_relative '../models/action/no_action.rb'
 
 RSpec.describe Scene do
   let(:scene) { Scene.new(1, 'my description', [action1, action2, action3]) }

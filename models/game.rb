@@ -1,6 +1,6 @@
 require 'readline'
-require_relative 'exit_action.rb'
-require_relative 'no_action.rb'
+require_relative 'action/exit_action.rb'
+require_relative 'action/no_action.rb'
 
 class Game
   attr_reader :current_scene
@@ -11,20 +11,24 @@ class Game
   end
 
   def run
-    until @current_scene.nil? do
-      self.print_description
-      self.get_input
-    end
+    self.print_description
+    self.get_input
   end
 
   def get_input
     while input = Readline.readline('> ', true)
       action = @current_scene.get_action_by_name input
 
-      print action.get_message
-      @current_scene = action.index_next_scene.nil? ? nil : @scenario[action.index_next_scene]
+      self.execute_action action
       break if action.stop_input?
+
+      self.print_description
     end 
+  end
+
+  def execute_action(action)
+    print action.get_message
+    @current_scene = action.index_next_scene.nil? ? nil : @scenario[action.index_next_scene]
   end
 
   def print_description

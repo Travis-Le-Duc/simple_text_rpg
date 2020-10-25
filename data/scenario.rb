@@ -1,8 +1,8 @@
 require_relative '../models/scene'
-require_relative '../models/good_action'
-require_relative '../models/win_action'
-require_relative '../models/bad_action'
-require_relative '../models/exit_action'
+require_relative '../models/action/good_action'
+require_relative '../models/action/win_action'
+require_relative '../models/action/bad_action'
+require_relative '../models/action/exit_action'
 
 def loadScenario
 

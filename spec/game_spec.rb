@@ -1,5 +1,5 @@
 require_relative '../models/game.rb'
-require_relative '../models/good_action.rb'
+require_relative '../models/action/good_action.rb'
 require_relative '../data/scenario.rb'
 require 'readline'
 
@@ -13,13 +13,10 @@ RSpec.describe Game do
     end
   end
 
-  describe '#get_input' do
+  describe '#execute_action' do
     it 'set current_scene to the next scene' do
       any_action = Good_action.new('jump', 3)
-      allow(Readline).to receive(:readline).and_return('')
-      allow(game.current_scene).to receive(:get_action_by_name).and_return(any_action)
-
-      game.get_input
+      game.execute_action any_action
       expect(game.current_scene).to equal(scenario[3])
     end
   end

@@ -9,4 +9,8 @@ class Good_action < Action
   def get_message
     ''
   end
+
+  def stop_input?
+    false
+  end
 end
